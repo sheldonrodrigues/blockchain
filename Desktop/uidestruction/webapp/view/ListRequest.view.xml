@@ -1,0 +1,98 @@
+<mvc:View controllerName="destruction.controller.ListRequest" height="100%" width="100%"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:core="sap.ui.core" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:f="sap.f"
+	xmlns:fb="sap.ui.comp.filterbar">
+    <f:DynamicPage id="listRequestPage">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle id="_IDGenDynamicPageTitle1">
+				<f:heading>
+					<Title id="_IDGenTitle1" text="{i18n>LISTREQUEST_VIEW_TITLE}"></Title>
+				</f:heading>
+				<f:actions>
+				</f:actions>
+			</f:DynamicPageTitle>
+		</f:title>
+        		<f:header>
+			<f:DynamicPageHeader id="_IDGenDynamicPageHeader1" pinnable="true">
+				<f:content>
+					<fb:FilterBar id="filterbar" reset="onReset" search="onGoButtonPressed" useToolbar="false" showGoOnFB="true">
+						<fb:filterItems>
+						<fb:FilterItem id="_IDGenFilterItem1" name="destructionRunFilter" label="{i18n>FILTER_DESTRUCTION_RUN_ID}">
+								<fb:control>
+									<Input id="destructionRunValueHelp" showValueHelp="true" valueHelpOnly="false" editable="true" enabled="true" valueHelpRequest="handleDestructionRunValueHelp"/>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDGenFilterItem2" name="applicationFilter" label="{i18n>FILTER_APPLICATION}">
+								<fb:control>
+									<Select id="applicationSelect" items ="{path:'oFilterModel>/data'}">
+									<core:Item id="_IDGenItem1" text="{oFilterModel>application}" key="{oFilterModel>application}"/>
+									</Select>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterItem id="_IDGenFilterItem3" name="destructionStatus" label="{i18n>FILTER_STATUS}">
+								<fb:control>
+									<Select id="statusSelect" items ="{path:'oFilterModel>/data'}">
+										<core:Item id="_IDGenItem2" text="{oFilterModel>status}" key ="{oFilterModel>status}"/>
+									</Select>
+								</fb:control>
+							</fb:FilterItem>
+							<fb:FilterGroupItem id="_IDGenFilterGroupItem1" name="destructionDate" label="{i18n>FILTER_DESTRUCTION_RUN_DATE}" visibleInFilterBar="true">
+								<fb:control>
+									<DatePicker id="datePicker"/>
+								</fb:control>
+							</fb:FilterGroupItem>
+						</fb:filterItems>
+					</fb:FilterBar>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+        <f:content>
+			<Table id="destructionRunsTable" items="{ path: 'oListModel>/data', sorter: { path: 'createdOn', descending: true }}" inset="false" growing="true" growingThreshold="20" 
+			updateFinished="onUpdateFinished" noDataText="{i18n>NO_DATA_FOUND}"
+			mode="None"  >
+				<headerToolbar>
+					<Toolbar id="_IDGenToolbar1">
+						<Title id ="destructionTableHeader" text="{i18n>DESTRUCTION_TABLE_HEADER}" level ="H4"/>
+						<ToolbarSpacer id="_IDGenToolbarSpacer1"></ToolbarSpacer>
+						<Button id="_IDGenButton1" text="{i18n>CREATE_DESTRUCTION_REQUEST}" press="onCreateDestructionRequestPressed"></Button>
+						<Button id="_IDGenButton2" text="{i18n>REFRESH}" press="onRefreshPressed" tooltip="{i18n>REFRESH}"></Button>
+					<!--	<Button icon="sap-icon://action-settings" press="onPersoButtonPressed"></Button> -->
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column id="_IDGenColumn1" minScreenWidth="Tablet" demandPopin="true" vAlign="Middle">
+						<Text id="_IDGenText1" text="{i18n>DESTRUCTION_RUN_ID}" tooltip="{i18n>DESTRUCTION_RUN_ID}"/>
+					</Column>
+					<Column id="_IDGenColumn2" minScreenWidth="Tablet" demandPopin="true" vAlign="Middle"> 
+						<Text id="_IDGenText2" text="{i18n>APPLICATION}" tooltip="{i18n>APPLICATION}"/>
+					</Column>
+	
+					<Column id="_IDGenColumn3" minScreenWidth="Tablet" demandPopin="true" vAlign="Middle">
+						<Text id="_IDGenText3" text="{i18n>PROCESSING_MODE}" tooltip="{i18n>PROCESSING_MODE}"/>
+					</Column>
+					
+					<Column id="_IDGenColumn4" minScreenWidth="Tablet" demandPopin="true" vAlign="Middle">
+						<Text id="_IDGenText4" text="{i18n>STATUS}" tooltip="{i18n>STATUS}"/>
+					</Column>
+					<Column id="_IDGenColumn5" minScreenWidth="Tablet" demandPopin="true" vAlign="Middle" hAlign="End">
+						<Text id="_IDGenText5" text="{i18n>DESTRUCTION_RUN_DATE}" tooltip="{i18n>DESTRUCTION_RUN_DATE}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem id="_IDGenColumnListItem1" vAlign="Middle" type="Navigation" press="handleListItemPress">
+						<cells>
+							<ObjectIdentifier id="_IDGenObjectIdentifier1" title="{oListModel>DestructionRunID}" tooltip="{destructionRequestsModel>requestId}"/>
+							<Text id="_IDGenText6" text="{oListModel>Application}" tooltip="{oListModel>Application}"/>
+							<Text id="_IDGenText7" text="{path:'oListModel>ProcessingMode', formatter:'.formatter.formatProcessingMode'}" tooltip="{path:'oListModel>ProcessingMode', formatter:'.formatter.formatProcessingMode'}"/>
+					
+							<ObjectStatus id="_IDGenObjectStatus1" text="{path:'oListModel>Status', formatter :'.formatter.formatRunText'}" state="{path:'oListModel>Status', formatter:'.formatter.formatRunStatus'}" tooltip="{path:'oListModel>Status', formatter :'.formatter.formatRunText'}"/>
+							<Text id="_IDGenText8" text="{path:'oListModel>DestructionRunDate' , formatter:'.formatter.formatDate'}" tooltip="{path:'oListModel>DestructionRunDate' , formatter:'.formatter.formatDate'}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</f:content>
+	</f:DynamicPage>
+    
+</mvc:View>

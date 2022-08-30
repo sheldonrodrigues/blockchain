@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE xml>
+<mvc:View
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true" 
+    controllerName="destruction.controller.CreateRequest"
+    xmlns:core="sap.ui.core" 
+    xmlns:uxap="sap.uxap" 
+    xmlns:layout="sap.ui.layout" 
+    xmlns:form="sap.ui.layout.form" 
+    height="100%">
+    <Page id="createpage"
+        title="{i18n>CREATE_REQUEST_TITLE}">
+        <content>
+			<uxap:ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" backgroundDesignAnchorBar="Solid" upperCaseAnchorBar="false">
+				<uxap:headerTitle>
+					<uxap:ObjectPageDynamicHeaderTitle>
+						<uxap:heading>
+							<Title text="{i18n>CREATE_OBJECT_PAGE_HEADER}"/>
+						</uxap:heading>
+					</uxap:ObjectPageDynamicHeaderTitle>
+				</uxap:headerTitle>
+                <uxap:sections>
+					<uxap:ObjectPageSection titleUppercase="false">
+						<uxap:subSections>
+							<uxap:ObjectPageSubSection  title="{i18n>CREATE_OBJECT_PAGE_FIRST_SUBSECTION_TITLE}">
+								<uxap:blocks >
+									<form:SimpleForm layout="ResponsiveGridLayout" singleContainerFullSize="false" editable="true">										
+										<Label text="{i18n>APPLICATION_VALUE_HELP_INPUT_LABEL}" required="true">
+											<layoutData>
+												<layout:GridData span="L2 M2 S2" indent="L0 M0 S0"/>
+											</layoutData>
+										</Label>
+										<Input id="applicationValueHelpInput" valueHelpRequest=".onApplicationValueHelpRequested" showValueHelp="true" valueHelpOnly="true">
+											<layoutData>
+												<layout:GridData span="L10 M10 S10" indent="L0 M0 S0" linebreak="false"/>
+											</layoutData>
+										</Input>									
+									</form:SimpleForm>
+								</uxap:blocks>
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+					<uxap:ObjectPageSection titleUppercase="false" showTitle="true"  title="Selection Criteria"
+						id="selectionCriteriaSubsection">
+						<uxap:subSections >
+							<uxap:ObjectPageSubSection  title="{i18n>CREATE_OBJECT_PAGE_FIRST_SUBSECTION_TITLE}">
+								<uxap:blocks>
+								</uxap:blocks>
+
+							</uxap:ObjectPageSubSection>
+						</uxap:subSections>
+					</uxap:ObjectPageSection>
+				</uxap:sections>
+        </uxap:ObjectPageLayout>
+        </content>
+		<footer>
+			<Toolbar width="100%">
+				<content>
+				 <Button
+                    icon="sap-icon://alert"
+					id="messagePopoverButton"     
+                    visible="false"
+                    type="Emphasized"
+                    press="onErrorMessagePopoverPress" />
+					<ToolbarSpacer/>
+					<Button text="{i18n>SCHEDULE}" id="ScheduleBtn" type="Emphasized" press=".onDestructionSchedule"/>
+					<Button text="{i18n>CANCEL}" id="CancelBtn" press=".onDestructionRunCancel"/>
+				</content>
+			</Toolbar>
+		</footer>
+    </Page>
+</mvc:View>

@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <SelectDialog id="destructionRunValueHelpDialog" 
+    title="{i18n>DESTRUCTION_RUN_ID}" 
+    search="handleRequestSearch"
+     confirm="handleDestructionRunValueHelpClose" 
+     cancel="handleDestructionRunValueHelpClose" 
+     items="{
+			path: 'oListModel>/data'
+		}" 
+        noDataText="{i18n>NO_REQUESTS_FOUND}">
+        <StandardListItem title="{oListModel>DestructionRunID}" type="Active" />
+    </SelectDialog>
+</core:FragmentDefinition>

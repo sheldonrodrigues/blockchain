@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		noDataText="{i18n>APPLICATION_GROUP_DIALOG_NO_DATA_TEXT}"
+		title="{i18n>APPLICATION_GROUP_DIALOG_TEXT}"
+		search="handleApplicationValueHelpSearch"
+		confirm="handleApplicationValueHelpSelect"		
+		showClearButton="false"
+        items="{
+			path: 'oFilterModel1>/data'
+		}"		
+		>
+        <StandardListItem
+			title="{oFilterModel1>applicationGroupName}"
+			description="{oFilterModel1>applicationGroupDescription}"			
+			type="Active" />		
+	</SelectDialog>
+</core:FragmentDefinition>
